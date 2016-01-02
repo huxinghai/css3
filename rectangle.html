@@ -9,59 +9,104 @@
     text-align: center;
   }
 
-  .box{
-    display: inline-block;
-    position: relative;
+  @keyframes round{
+    from{ transform: rotateY(0deg); }
+    to{ transform: rotateY(360deg); }
+  }
+
+  .stage{
+    -moz-perspective: 360px; 
+    -o-perspective: 360px; 
+    -webkit-perspective: 360px; 
+    perspective: 360px; 
     margin: 25% auto;
   }
 
+  .box{
+    display: inline-block;
+    position: relative;
+    width: 196px;
+    height: 196px;
+
+    -moz-animation: round 5s infinite infinite;
+    -o-animation: round 5s linear infinite;
+    -webkit-animation: round 5s linear infinite;
+    animation: round 5s linear infinite;
+
+
+    -moz-transform: translateZ(-100px);
+    -o-transform: translateZ(-100px);
+    -webkit-transform: translateZ(-100px);
+    transform: translateZ(-100px);
+
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+  }
+
   .box .item{
-    margin: 0px auto;
-    margin-top: 50px;
-    width: 100px;
-    height: 48px;
-    background: transparent;
-    box-shadow: 0px 0px 42px -15px red inset;
-    -webkit-box-shadow: 0px 0px 42px -15px red inset;
-    -ms-box-shadow: 0px 0px 42px -15px red inset;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #D8F10D;
+    position: absolute;
+    background: rgba(12, 155, 251, 0.3);
+    font-weight: bold;
+    color: red;
+    line-height: 198px;
+  }
+
+  .box .front{
+    -moz-transform: translateZ(100px);
+    -o-transform: translateZ(100px);
+    -webkit-transform: translateZ(100px);
+    transform: translateZ(100px);
+  }
+
+  .box .back{
+    transform: rotateX(180deg) translateZ(100px); 
+    -moz-transform: rotateX(180deg) translateZ(100px); 
+    -o-transform: rotateX(180deg) translateZ(100px); 
+    -webkit-transform: rotateX(180deg) translateZ(100px); 
   }
 
   .box .top{
-    transform: skew(-47deg);
-    -webkit-transform: skew(-47deg);
-    -ms-transform: skew(-47deg);
+    transform: rotateX(90deg) translateZ(100px); 
+    -moz-transform: rotateX(90deg) translateZ(100px); 
+    -o-transform: rotateX(90deg) translateZ(100px); 
+    -webkit-transform: rotateX(90deg) translateZ(100px); 
   }
 
   .box .bottom{
-    transform: skew(-47deg); 
+    transform: rotateX(-90deg) translateZ(100px); 
+    -moz-transform: rotateX(-90deg) translateZ(100px); 
+    -o-transform: rotateX(-90deg) translateZ(100px); 
+    -webkit-transform: rotateX(-90deg) translateZ(100px); 
   }
 
   .box .left{
-    position: absolute;
-    top: 0px;
-    height: 99px;
-    top: 47px;
-    left: -25px;
+    transform: rotateY(-90deg) translateZ(100px); 
+    -moz-transform: rotateY(-90deg) translateZ(100px); 
+    -o-transform: rotateY(-90deg) translateZ(100px); 
+    -webkit-transform: rotateY(-90deg) translateZ(100px); 
+
   }
 
-  .box .right{
-    height: 99px;
-    top: 0px;
-    position: absolute;
-    left: 26px;
+  .box .right{  
+    transform: rotateY(90deg) translateZ(100px); 
+    -moz-transform: rotateY(90deg) translateZ(100px); 
+    -o-transform: rotateY(90deg) translateZ(100px); 
+    -webkit-transform: rotateY(90deg) translateZ(100px); 
   }
 </style>
 <body>
-  <div class='box'>
-    
-    <div class='item top'>
-    </div>
-    <div class='item bottom'>
-    </div>
-
-    <div class='item left'>    
-    </div>
-    <div class='item right'>
+  <div class='stage'>
+    <div class='box'>
+      <div class='item top'>top</div>
+      <div class='item bottom'>bottom</div>
+      <div class='item left'>left</div>
+      <div class='item right'>right</div>
+      <div class='item front'>front</div>
+      <div class='item back'>back</div>
     </div>
   </div>
 </body>
